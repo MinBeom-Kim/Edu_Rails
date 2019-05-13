@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Active Class Lists</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Student</th>
+      <th>Active class</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @active_class_lists.each do |active_class_list| %>
+      <tr>
+        <td><%= active_class_list.student %></td>
+        <td><%= active_class_list.active_class %></td>
+        <td><%= link_to 'Show', active_class_list %></td>
+        <td><%= link_to 'Edit', edit_active_class_list_path(active_class_list) %></td>
+        <td><%= link_to 'Destroy', active_class_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Active Class List', new_active_class_list_path %>

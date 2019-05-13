@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Class name:</strong>
+  <%= @active_class.class_name %>
+</p>
+
+<p>
+  <strong>Max number:</strong>
+  <%= @active_class.max_number %>
+</p>
+
+
+
+
+<table>
+  <th>강의신청ID</th>
+  <th>강의명</th>
+  <th>수강학생</th>
+  <% @active_class_list.each do |active_class_list| %>
+    <tr>
+      <td><%= active_class_list.id %></td>
+      <td><%= ActiveClass.find(active_class_list.active_class_id).class_name %></td>
+      <td><%= Student.find(active_class_list.student_id).student_name %></td>
+      <td><%= link_to 'Destroy', active_class_list, method: :delete, data: { confirm: "Are you sure?"} %></td>
+    </tr>
+  <% end %>
+</table>
+
+
+
+
+<%= link_to 'Edit', edit_active_class_path(@active_class) %> |
+<%= link_to 'Back', active_classes_path %>

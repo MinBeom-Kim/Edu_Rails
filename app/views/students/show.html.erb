@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Student name:</strong>
+  <%= @student.student_name %>
+</p>
+
+
+
+<table>
+  <thead>
+    <tr>
+      <th>강의명</th>
+      <th>현황</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @active_class.each do |active_class| %>
+    <tr>
+      <td><%= active_class.class_name %></td>
+      <td><%= @student.enrollment_status(active_class) %></td>
+      <td><%= link_to '강의신청', create_act_class_path(@student, active_class.id), method: :post %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+
+
+
+<%= link_to 'Edit', edit_student_path(@student) %> |
+<%= link_to 'Back', students_path %>
